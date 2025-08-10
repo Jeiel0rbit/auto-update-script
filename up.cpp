@@ -126,20 +126,11 @@ int main() {
     if (termux) {
         std::cout << COLOR_INFO << "[INFO] Detected system: Termux (Android)" << COLOR_RESET << std::endl;
 
-        // Dry-run simulation of pkg commands (without -y)
-        std::cout << COLOR_INFO << "[INFO] Running dry-run simulation of update..." << COLOR_RESET << std::endl;
-        int ret = exec_cmd_realtime("pkg update 2>&1", "[UPDATE] ", COLOR_LOG, true);
+        // Simulação de upgrade mostrando pacotes que podem ser atualizados
+        std::cout << COLOR_INFO << "[INFO] Simulating upgrade by listing upgradable packages..." << COLOR_RESET << std::endl;
+        int ret = exec_cmd_realtime("pkg list-upgradable 2>&1", "[SIMULATE UPGRADE] ", COLOR_LOG);
         if (ret != 0) {
-            std::cerr << COLOR_ERROR << "[ERROR] Update simulation failed. Aborting." << COLOR_RESET << std::endl;
-            return 1;
-        }
-
-        print_separator("UPGRADE");
-
-        std::cout << COLOR_INFO << "[INFO] Running dry-run simulation of upgrade..." << COLOR_RESET << std::endl;
-        ret = exec_cmd_realtime("pkg upgrade 2>&1", "[UPGRADE] ", COLOR_LOG, true);
-        if (ret != 0) {
-            std::cerr << COLOR_ERROR << "[ERROR] Upgrade simulation failed. Aborting." << COLOR_RESET << std::endl;
+            std::cerr << COLOR_ERROR << "[ERROR] Failed to list upgradable packages. Aborting." << COLOR_RESET << std::endl;
             return 1;
         }
 
