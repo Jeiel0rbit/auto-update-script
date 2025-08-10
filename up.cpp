@@ -126,9 +126,9 @@ int main() {
     if (termux) {
         std::cout << COLOR_INFO << "[INFO] Detected system: Termux (Android)" << COLOR_RESET << std::endl;
 
-        // Simulação de upgrade mostrando pacotes que podem ser atualizados
+        // Simulação de upgrade listando pacotes atualizáveis via apt
         std::cout << COLOR_INFO << "[INFO] Simulating upgrade by listing upgradable packages..." << COLOR_RESET << std::endl;
-        int ret = exec_cmd_realtime("pkg list-upgradable 2>&1", "[SIMULATE UPGRADE] ", COLOR_LOG);
+        int ret = exec_cmd_realtime("apt list --upgradable 2>&1", "[SIMULATE UPGRADE] ", COLOR_LOG);
         if (ret != 0) {
             std::cerr << COLOR_ERROR << "[ERROR] Failed to list upgradable packages. Aborting." << COLOR_RESET << std::endl;
             return 1;
