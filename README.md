@@ -1,8 +1,7 @@
-# Cross-Platform Linux & Termux Update Script
+# Cross-Platform Linux Update Script
 
-This C++ command-line tool automates system updates and upgrades for **Termux (Android)** and **Debian/Ubuntu Linux** distributions. It performs:
+This C++ command-line tool automates system updates and upgrades for **Debian/Ubuntu Linux** distributions. It performs:
 
-- Detection of the operating environment (Termux or Linux distro).
 - Validation of supported Linux distros (only Ubuntu and Debian).
 - Dry-run simulation of update and upgrade commands to prevent unexpected errors.
 - Real execution with real-time, colored output for logs, info, warnings, and errors.
@@ -13,7 +12,6 @@ This C++ command-line tool automates system updates and upgrades for **Termux (A
 
 ## Features
 
-- **Termux support** using `pkg` package manager.
 - **Ubuntu/Debian support** using `apt-get`.
 - Color-coded terminal output (yellow for info, green for logs, gray for warnings, red for errors).
 - Safe: runs simulations before real operations.
@@ -25,8 +23,7 @@ This C++ command-line tool automates system updates and upgrades for **Termux (A
 
 - C++ compiler (tested with `clang++` and `g++`)
 - On Linux: `sudo` privileges to run `apt-get` commands.
-- On Termux: running inside Termux environment.
-
+  
 ---
 
 ## Compilation
@@ -47,7 +44,7 @@ Run the compiled executable from your terminal:
 
 The script will:
 
-1. Detect if running on Termux or supported Linux.
+1. Detect if running on supported Linux.
 
 
 2. Perform a dry-run simulation of update and upgrade commands.
@@ -63,7 +60,7 @@ The script will:
 
 > [!note]
 >
-> Only Ubuntu Debian and Termux distributions are supported on Linux.
+> Only Ubuntu and Debian distributions are supported on Linux.
 The script aborts on any errors during simulations to prevent unexpected states.
 Output warnings (e.g., apt CLI warnings) appear in gray.
 Customize colors by modifying ANSI codes in the source if desired.
